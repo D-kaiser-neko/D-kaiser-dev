@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.0" y="0" width="50.0" height="50" fill="#FFFFFF" stroke="#888" stroke-width="1"/>
+<rect x="50.0" y="0" width="50.0" height="50" fill="#FFFF00" stroke="#888" stroke-width="1"/>
+<rect x="100.0" y="0" width="50.0" height="50" fill="#00FFFF" stroke="#888" stroke-width="1"/>
+<rect x="150.0" y="0" width="50.0" height="50" fill="#00FF00" stroke="#888" stroke-width="1"/>
+<rect x="200.0" y="0" width="50.0" height="50" fill="#FF00FF" stroke="#888" stroke-width="1"/>
+<rect x="250.0" y="0" width="50.0" height="50" fill="#FF0000" stroke="#888" stroke-width="1"/>
+<rect x="300.0" y="0" width="50.0" height="50" fill="#0000FF" stroke="#888" stroke-width="1"/>
+<rect x="350.0" y="0" width="50.0" height="50" fill="#000000" stroke="#888" stroke-width="1"/>
+
+  <text x="20" y="85" font-family="sans-serif" font-size="30" font-weight="bold" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">SVG</text>
+  <text x="20" y="105" font-family="monospace" font-size="13" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">Color:</text>
+<text x="130" y="105" font-family="monospace" font-size="13" fill="#333" stroke="white" stroke-width="2.5" paint-order="stroke">Vector (XML/CSS)</text>
+<text x="20" y="123" font-family="monospace" font-size="13" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">Animation:</text>
+<text x="130" y="123" font-family="monospace" font-size="13" fill="#333" stroke="white" stroke-width="2.5" paint-order="stroke">Yes (SMIL/CSS)</text>
+<text x="20" y="141" font-family="monospace" font-size="13" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">Transparency:</text>
+<text x="130" y="141" font-family="monospace" font-size="13" fill="#333" stroke="white" stroke-width="2.5" paint-order="stroke">Yes</text>
+<text x="20" y="159" font-family="monospace" font-size="13" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">Compression:</text>
+<text x="130" y="159" font-family="monospace" font-size="13" fill="#333" stroke="white" stroke-width="2.5" paint-order="stroke">None (Text)</text>
+<text x="20" y="177" font-family="monospace" font-size="13" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">Other:</text>
+<text x="130" y="177" font-family="monospace" font-size="13" fill="#333" stroke="white" stroke-width="2.5" paint-order="stroke">Resolution independent</text>
+<text x="20" y="205" font-family="sans-serif" font-size="13" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">Inventor: W3C</text>
+<text x="20" y="223" font-family="sans-serif" font-size="13" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">Year: 2001</text>
+<text x="20" y="248" font-family="sans-serif" font-size="13" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">Purpose / Advantages:</text>
+<text x="20" y="266" font-family="sans-serif" font-size="12" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">Scalable vector graphic. Perfect for icons, logos,</text>
+<text x="20" y="282" font-family="sans-serif" font-size="12" fill="black" stroke="white" stroke-width="2.5" paint-order="stroke">and responsive web design.</text>
+
+</svg>

@@ -1,0 +1,15 @@
+{
+  "name": "测试",
+  "remote_name": "test",
+  "remote_path": "测试",
+  "local_paths": [
+    {
+      "alias": "termux",
+      "path": "\u001b[0;32m已保存！\u001b[0m\n/storage/emulated/0/termux/"
+    },
+    {
+      "alias": "下载",
+      "path": "\u001b[0;32m已保存！\u001b[0m\n/storage/emulated/0/Download/"
+    }
+  ]
+}

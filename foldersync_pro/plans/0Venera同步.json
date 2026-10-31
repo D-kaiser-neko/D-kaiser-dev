@@ -1,0 +1,11 @@
+{
+  "name": "Venera同步",
+  "remote_name": "Venera",
+  "remote_path": "/",
+  "local_paths": [
+    {
+      "alias": "Venera本地",
+      "path": "/storage/emulated/0/Android/data/com.github.wgh136.venera/files/local/"
+    }
+  ]
+}

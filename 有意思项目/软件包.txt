@@ -1,0 +1,12 @@
+BSDgame: moon-buggy snake adventure battlestar robots spirhunt atc drop4
+cmatrix 
+fastfetch ?
+gdu 文件大小分析(高级)
+dust 文件大小分析(精简)
+oha TUI http测压
+cbonsai 种树
+2048
+nyancat 小猫
+brogue 游戏
+asciinema 终端录制,播放
+binwalk 文件分析(隐藏等)

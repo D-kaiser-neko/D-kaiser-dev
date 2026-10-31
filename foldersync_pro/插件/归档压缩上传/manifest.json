@@ -1,0 +1,8 @@
+{
+  "name": "归档压缩上传",
+  "scope": "sync_direction",
+  "target": "all",
+  "match": ["*"],
+  "position": "bottom",
+  "entry": "run.sh"
+}

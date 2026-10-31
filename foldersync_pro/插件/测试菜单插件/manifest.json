@@ -1,0 +1,8 @@
+{
+  "name": "测试菜单插件",
+  "scope": "menu",
+  "target": "all",
+  "match": ["*"],
+  "position": "after:预览文件",
+  "entry": "run.sh"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "压缩包预览",
+  "scope": "menu",
+  "target": "file",
+  "match": ["*.zip", "*.tar.gz", "*.tgz", "*.rar", "*.7z"],
+  "position": "after:预览文件",
+  "entry": "run.sh"
+}

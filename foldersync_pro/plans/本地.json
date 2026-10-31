@@ -1,0 +1,11 @@
+{
+  "name": "本地",
+  "remote_name": "local",
+  "remote_path": "/storage/emulated/0/开发归档/",
+  "local_paths": [
+    {
+      "alias": "foldersync_pro",
+      "path": "/data/data/com.termux/files/home/.foldersync_pro"
+    }
+  ]
+}

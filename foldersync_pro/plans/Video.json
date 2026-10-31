@@ -1,0 +1,11 @@
+{
+  "name": "Video",
+  "remote_name": "Video",
+  "remote_path": "/",
+  "local_paths": [
+    {
+      "alias": "/storage/emulated/0/Movies/",
+      "path": "/storage/emulated/0/Movies/"
+    }
+  ]
+}

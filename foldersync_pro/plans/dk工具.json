@@ -1,0 +1,11 @@
+{
+  "name": "dk工具",
+  "remote_name": "D-kaiser",
+  "remote_path": "/D-kaiser_tools/",
+  "local_paths": [
+    {
+      "alias": "dk工具",
+      "path": "/data/data/com.termux/files/home//D-kaiser_tools/"
+    }
+  ]
+}

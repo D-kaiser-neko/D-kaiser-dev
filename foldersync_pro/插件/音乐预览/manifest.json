@@ -1,0 +1,8 @@
+{
+  "name": "音乐预览",
+  "scope": "menu",
+  "target": "file",
+  "match": ["*.mp3", "*.flac", "*.wav", "*.ogg", "*.m4a", "*.aac", "*.wma", "*.opus", "*.ape", "*.aiff", "*.alac"],
+  "position": "after:预览文件",
+  "entry": "run.sh"
+}

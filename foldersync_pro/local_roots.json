@@ -1,0 +1,30 @@
+[
+  {
+    "alias": "/storage/emulated/0/termux/",
+    "path": "/storage/emulated/0/termux/"
+  },
+  {
+    "alias": "Download",
+    "path": "/storage/emulated/0/Download/"
+  },
+  {
+    "alias": "$HOME/.foldersync_pro",
+    "path": "/data/data/com.termux/files/home/.foldersync_pro"
+  },
+  {
+    "alias": "termux规划",
+    "path": "/data/data/com.termux/files/home/termux灵感规划"
+  },
+  {
+    "alias": "dk工具",
+    "path": "/data/data/com.termux/files/home//D-kaiser_tools/"
+  },
+  {
+    "alias": "vVenera本地",
+    "path": "/storage/emulated/0/Android/data/com.github.wgh136.venera/files/local/"
+  },
+  {
+    "alias": "/storage/emulated/0/Movies/",
+    "path": "/storage/emulated/0/Movies/"
+  }
+]

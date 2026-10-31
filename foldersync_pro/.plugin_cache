@@ -1,0 +1,4 @@
+音乐预览|menu|file|*.mp3,*.flac,*.wav,*.ogg,*.m4a,*.aac,*.wma,*.opus,*.ape,*.aiff,*.alac|after:预览文件|/data/data/com.termux/files/home/.foldersync_pro/插件/音乐预览/run.sh
+压缩包预览|menu|file|*.zip,*.tar.gz,*.tgz,*.rar,*.7z|after:预览文件|/data/data/com.termux/files/home/.foldersync_pro/插件/压缩包预览/run.sh
+归档压缩上传|sync_direction|all|*|bottom|/data/data/com.termux/files/home/.foldersync_pro/插件/归档压缩上传/run.sh
+测试菜单插件|menu|all|*|after:预览文件|/data/data/com.termux/files/home/.foldersync_pro/插件/测试菜单插件/run.sh

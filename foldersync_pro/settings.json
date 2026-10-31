@@ -1,0 +1,6 @@
+{
+  "skip_cert_verify": false,
+  "multi_thread_streams": 16,
+  "transfers": 16,
+  "checkers": 32
+}

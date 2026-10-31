@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>D-kaiser Music</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="toast" id="toast"></div>
+<div class="hd"><h1>🎵 D-kaiser Music</h1></div>
+
+<div class="src-bar">
+  <button id="srcMg" class="active" onclick="setSrc('muguang')">kuwo暮光</button>
+  <button id="srcHi" onclick="setSrc('hi')">酷我聚合</button>
+  <button class="dl-btn" onclick="toggleDp()">📥 下载管理<span class="badge" id="dlB" style="display:none">0</span></button>
+</div>
+
+<div class="cb">
+  <input id="ckIn" placeholder="酷我聚合 Cookie (仅酷我聚合源需要)">
+  <button onclick="saveCk()">💾 保存</button>
+</div>
+
+<div class="sb">
+  <input id="kw" placeholder="输入歌名或歌手..." onkeydown="if(event.key==='Enter')doSearch()">
+  <button onclick="doSearch()">🔍 搜索</button>
+</div>
+
+<div class="acts">
+  <button onclick="dlSel()">⬇️ 下载选中</button>
+  <button onclick="togAll()">☑️ 全选</button>
+  <button id="prevB" onclick="chgPg(-1)" disabled>◀ 上一页</button>
+  <button id="nextB" onclick="chgPg(1)" disabled>下一页 ▶</button>
+  <span class="pg" id="pgI"></span>
+</div>
+
+<div class="sl" id="list"></div>
+<div class="lp" id="logs"></div>
+
+<div class="dp" id="dp">
+  <div class="dp-h"><h3>📥 下载管理</h3><div class="dp-x" onclick="toggleDp()">✕</div></div>
+  <div class="dp-b" id="dpB"></div>
+</div>
+
+<div class="pb" id="pBar" onclick="openFp()">
+  <img class="pb-c" id="pbC">
+  <div class="pb-i"><div class="pb-t" id="pbT"></div><div class="pb-s" id="pbS"></div></div>
+  <audio id="au" preload="auto"></audio>
+</div>
+
+<div class="fp" id="fp">
+  <div class="fp-x" onclick="closeFp()">✕</div>
+  <img class="fp-c" id="fpC">
+  <div class="fp-t" id="fpT"></div>
+  <div class="fp-a" id="fpA"></div>
+  <div class="fp-l" id="fpL"></div>
+  <audio class="fp-au" id="fpAu" controls preload="auto"></audio>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

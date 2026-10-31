@@ -1,0 +1,137 @@
+#!/usr/bin/env python3
+"""暮光工具箱 API（签名 / 搜索 / 播放链接 / 歌词）"""
+import time, hashlib, json, base64, urllib.parse, zlib
+import requests
+from config import MG_SEARCH, MG_PLAY, MG_LYRIC, MG_SALT, MG_SOURCE, PAGE_SIZE, log
+from core.lrc_parser import format_lrc
+
+
+def mg_headers():
+    ts = str(int(time.time() * 1000))
+    sign = hashlib.md5(f"{MG_SALT}{ts}1".encode()).hexdigest()
+    return {
+        "Version": "1", "Platform": "android",
+        "Timestamp": ts, "Sign": sign,
+        "User-Agent": "okhttp/4.11.0"
+    }
+
+
+def mg_search(keyword, page=1, size=PAGE_SIZE):
+    url = f"{MG_SEARCH}?keyword={urllib.parse.quote(keyword)}&pageNo={page}&pageSize={size}"
+    try:
+        j = requests.get(url, headers=mg_headers(), timeout=15).json()
+        if j.get("code") != 200:
+            return [], 0
+        d = j.get("data", {})
+        songs = []
+        for s in d.get("data", []):
+            s["pic_url"] = s.get("pic", "")
+            s["source_tag"] = "muguang"
+            s["minfo"] = [{"format": "flac"}] if s.get("hasLossless") else [{"format": "mp3"}]
+            songs.append(s)
+        return songs, d.get("total", 0)
+    except Exception as e:
+        log(f"[-] 暮光搜索异常: {e}")
+        return [], 0
+
+
+def mg_play_url(rid, quality="flac"):
+    br = {"flac": "2000kflac", "320": "320kmp3", "128": "128kmp3"}.get(quality, "2000kflac")
+    params = {
+        "f": "web", "user": "0", "source": MG_SOURCE,
+        "type": "convert_url_with_sign", "rid": str(rid), "br": br
+    }
+    try:
+        j = requests.get(MG_PLAY, params=params, headers={
+            "User-Agent": "okhttp/4.11.0", "Accept-Encoding": "gzip"
+        }, timeout=15).json()
+        if j.get("code") == 200:
+            d = j.get("data", {})
+            return d.get("url"), d.get("format", quality)
+        return None, None
+    except Exception as e:
+        log(f"[-] 播放链接异常: {e}")
+        return None, None
+
+
+def mg_lyrics(rid):
+    """酷我歌词: Base64编码 + zlib压缩 (终极修复版)"""
+    import base64
+    import zlib
+    
+    params = {"f": "web", "type": "lyric", "lrcx": "1", "rid": str(rid), "encode": "utf8"}
+    try:
+        r = requests.get(MG_LYRIC, params=params, headers={
+            "User-Agent": "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/120.0.6099.144 Mobile Safari/537.36",
+            "Accept-Encoding": "gzip"
+        }, timeout=15)
+        
+        raw_text = r.text.strip()
+        if not raw_text:
+            return None
+            
+        lrc_text = None
+        
+        # 1. 尝试解析为 JSON (兼容部分直接返回 JSON 的情况)
+        try:
+            j = json.loads(raw_text)
+            if isinstance(j, dict):
+                if j.get("code") in (0, 200):
+                    d = j.get("data", "")
+                    if isinstance(d, str):
+                        raw_text = d  # 如果 data 是字符串，可能是 base64，交给下面处理
+                    elif isinstance(d, dict):
+                        arr = d.get("lrclist")
+                        if isinstance(arr, list) and arr:
+                            out = []
+                            for it in arr:
+                                if not isinstance(it, dict): continue
+                                t = float(it.get("time", 0) or 0)
+                                mm, ss = divmod(t, 60)
+                                lyric = it.get("lineLyric") or it.get("lyric") or ""
+                                if lyric.strip():
+                                    out.append(f"[{int(mm):02d}:{ss:05.2f}]{lyric}")
+                            lrc_text = "\n".join(out)
+                        else:
+                            for key in ("content", "lyric", "lrc"):
+                                v = d.get(key)
+                                if isinstance(v, str) and len(v) > 10 and "[" in v:
+                                    lrc_text = v
+                                    break
+        except (ValueError, TypeError):
+            pass
+
+        # 2. 如果还没拿到 lrc_text，尝试 Base64 解码 + zlib 解压
+        if not lrc_text:
+            try:
+                # 先 Base64 解码
+                decoded_bytes = base64.b64decode(raw_text)
+                # 再尝试 zlib 解压
+                try:
+                    decompressed = zlib.decompress(decoded_bytes)
+                    lrc_text = decompressed.decode("utf-8", errors="replace")
+                except zlib.error:
+                    # 如果不是 zlib 压缩，直接当 utf-8 文本解码
+                    lrc_text = decoded_bytes.decode("utf-8", errors="replace")
+            except Exception:
+                # 如果 Base64 失败，检查原始文本是否本身就是 LRC
+                if "[" in raw_text and "]" in raw_text:
+                    lrc_text = raw_text
+
+        # 3. 最终校验
+        if not lrc_text or "[" not in lrc_text:
+            log(f"[-] 未找到有效歌词内容 rid={rid}")
+            log(f"    [调试] 实际返回内容前150字符: {raw_text[:150]!r}")
+            return None
+            
+        result = format_lrc(lrc_text)
+        if result:
+            log(f"[✅] 歌词已解析 rid={rid} 长度={len(result)}")
+            return result
+        
+        log(f"[-] 歌词格式化后为空 rid={rid}")
+        return lrc_text[:2000] # 兜底返回原始文本
+
+    except Exception as e:
+        log(f"[-] 歌词请求异常: {e}")
+        return None

@@ -1,0 +1,11 @@
+{
+  "name": "termux灵感规划",
+  "remote_name": "D-kaiser",
+  "remote_path": "/termux灵感规划",
+  "local_paths": [
+    {
+      "alias": "0",
+      "path": "/data/data/com.termux/files/home/termux灵感规划"
+    }
+  ]
+}
